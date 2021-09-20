@@ -1,0 +1,11 @@
+schema: http://localhost:3000/api/graphql
+generates:
+  ./generated/apollo-helpers.ts:
+    plugins:
+      - typescript-apollo-client-helpers
+  ./generated/types.d.ts:
+    plugins:
+      - typescript
+  ./generated/react.ts:
+    plugins:
+      - typescript-react-query
