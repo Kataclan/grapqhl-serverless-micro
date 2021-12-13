@@ -67,6 +67,6 @@
     "skipLibCheck": true /* Skip type checking of declaration files. */,
     "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */
   },
-  "include": ["api", "utils", "types", "graphql"],
+  "include": ["api", "utils", "types", "graphql", "constants", "mocks"],
   "exclude": ["node_modules"]
 }

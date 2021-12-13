@@ -18,7 +18,8 @@ const apolloServer = new ApolloServer({
 const cors = micro_cors({
   allowHeaders: ["Access-Control-Allow-Origin", "Authorization", "Content-Type"],
   allowMethods: ["GET", "POST", "OPTIONS"],
-  origin: process.env.NODE_ENV === "production" ? "https://safer-doc-client.vercel.app" : "*",
+  origin: "*",
+  //origin: process.env.NODE_ENV === "production" ? "https://safer-doc-client.vercel.app" : "*",
 });
 
 export default apolloServer.start().then(() => {

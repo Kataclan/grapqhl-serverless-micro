@@ -1,5 +1,5 @@
 import { ApolloError } from "apollo-server-micro";
-import { users } from "../../api/mocks/users";
+import { users } from "../../mocks/users";
 import { User } from "../../types";
 
 export default {
