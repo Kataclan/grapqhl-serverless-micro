@@ -38,7 +38,7 @@ export const MAGI_GEN0_BODIES: ZeniImageInfo[] = [
     fileName: "magi_gen0_body_1.png",
     generation: ZeniGenerations.Gen0,
     class: ZeniClasses.Magi,
-    weight: 80,
+    weight: 50,
   },
   {
     id: "magi_gen0_body_2",
@@ -47,7 +47,7 @@ export const MAGI_GEN0_BODIES: ZeniImageInfo[] = [
     fileName: "magi_gen0_body_2.png",
     generation: ZeniGenerations.Gen0,
     class: ZeniClasses.Magi,
-    weight: 3,
+    weight: 8.33,
   },
   {
     id: "magi_gen0_body_3",
@@ -56,7 +56,7 @@ export const MAGI_GEN0_BODIES: ZeniImageInfo[] = [
     fileName: "magi_gen0_body_3.png",
     generation: ZeniGenerations.Gen0,
     class: ZeniClasses.Magi,
-    weight: 3,
+    weight: 4,
   },
   {
     id: "magi_gen0_body_4",
@@ -65,17 +65,17 @@ export const MAGI_GEN0_BODIES: ZeniImageInfo[] = [
     fileName: "magi_gen0_body_4.png",
     generation: ZeniGenerations.Gen0,
     class: ZeniClasses.Magi,
-    weight: 3,
+    weight: 2,
   },
 
   {
     id: "magi_gen0_body_5",
-    displayName: "Acid Green  ",
+    displayName: "Acid Green",
     filePath: _AbodyImagesDir,
     fileName: "magi_gen0_body_5.png",
     generation: ZeniGenerations.Gen0,
     class: ZeniClasses.Magi,
-    weight: 3,
+    weight: 7,
   },
 
   {
@@ -85,7 +85,7 @@ export const MAGI_GEN0_BODIES: ZeniImageInfo[] = [
     fileName: "magi_gen0_body_6.png",
     generation: ZeniGenerations.Gen0,
     class: ZeniClasses.Magi,
-    weight: 3,
+    weight: 7,
   },
 
   {
@@ -95,7 +95,7 @@ export const MAGI_GEN0_BODIES: ZeniImageInfo[] = [
     fileName: "magi_gen0_body_7.png",
     generation: ZeniGenerations.Gen0,
     class: ZeniClasses.Magi,
-    weight: 2,
+    weight: 3,
   },
 
   {
@@ -105,7 +105,7 @@ export const MAGI_GEN0_BODIES: ZeniImageInfo[] = [
     fileName: "magi_gen0_body_8.png",
     generation: ZeniGenerations.Gen0,
     class: ZeniClasses.Magi,
-    weight: 2,
+    weight: 5,
   },
   {
     id: "warrior_gen0_body_9",
@@ -114,7 +114,7 @@ export const MAGI_GEN0_BODIES: ZeniImageInfo[] = [
     fileName: "warrior_gen0_body_9.png",
     generation: ZeniGenerations.Gen0,
     class: ZeniClasses.Warrior,
-    weight: 2,
+    weight: 5,
   },
   {
     id: "magi_gen0_body_10",
@@ -123,7 +123,7 @@ export const MAGI_GEN0_BODIES: ZeniImageInfo[] = [
     fileName: "magi_gen0_body_10.png",
     generation: ZeniGenerations.Gen0,
     class: ZeniClasses.Magi,
-    weight: 1,
+    weight: 0.33,
   },
 ];
 
@@ -135,7 +135,7 @@ export const ROGUE_GEN0_BODIES: ZeniImageInfo[] = [
     fileName: "rogue_gen0_body_1.png",
     generation: ZeniGenerations.Gen0,
     class: ZeniClasses.Rogue,
-    weight: 80,
+    weight: 50,
   },
   {
     id: "rogue_gen0_body_2",
@@ -144,7 +144,7 @@ export const ROGUE_GEN0_BODIES: ZeniImageInfo[] = [
     fileName: "rogue_gen0_body_2.png",
     generation: ZeniGenerations.Gen0,
     class: ZeniClasses.Rogue,
-    weight: 3,
+    weight: 8.33,
   },
   {
     id: "rogue_gen0_body_3",
@@ -153,7 +153,7 @@ export const ROGUE_GEN0_BODIES: ZeniImageInfo[] = [
     fileName: "rogue_gen0_body_3.png",
     generation: ZeniGenerations.Gen0,
     class: ZeniClasses.Rogue,
-    weight: 3,
+    weight: 4,
   },
 
   {
@@ -163,7 +163,7 @@ export const ROGUE_GEN0_BODIES: ZeniImageInfo[] = [
     fileName: "rogue_gen0_body_4.png",
     generation: ZeniGenerations.Gen0,
     class: ZeniClasses.Rogue,
-    weight: 3,
+    weight: 2,
   },
 
   {
@@ -173,7 +173,7 @@ export const ROGUE_GEN0_BODIES: ZeniImageInfo[] = [
     fileName: "rogue_gen0_body_5.png",
     generation: ZeniGenerations.Gen0,
     class: ZeniClasses.Rogue,
-    weight: 3,
+    weight: 7,
   },
 
   {
@@ -183,7 +183,7 @@ export const ROGUE_GEN0_BODIES: ZeniImageInfo[] = [
     fileName: "rogue_gen0_body_6.png",
     generation: ZeniGenerations.Gen0,
     class: ZeniClasses.Rogue,
-    weight: 3,
+    weight: 7,
   },
 
   {
@@ -193,7 +193,7 @@ export const ROGUE_GEN0_BODIES: ZeniImageInfo[] = [
     fileName: "rogue_gen0_body_7.png",
     generation: ZeniGenerations.Gen0,
     class: ZeniClasses.Rogue,
-    weight: 2,
+    weight: 3,
   },
 
   {
@@ -203,7 +203,7 @@ export const ROGUE_GEN0_BODIES: ZeniImageInfo[] = [
     fileName: "rogue_gen0_body_8.png",
     generation: ZeniGenerations.Gen0,
     class: ZeniClasses.Rogue,
-    weight: 2,
+    weight: 5,
   },
   {
     id: "warrior_gen0_body_9",
@@ -212,7 +212,7 @@ export const ROGUE_GEN0_BODIES: ZeniImageInfo[] = [
     fileName: "warrior_gen0_body_9.png",
     generation: ZeniGenerations.Gen0,
     class: ZeniClasses.Warrior,
-    weight: 2,
+    weight: 5,
   },
   {
     id: "rogue_gen0_body_9",
@@ -221,7 +221,7 @@ export const ROGUE_GEN0_BODIES: ZeniImageInfo[] = [
     fileName: "rogue_gen0_body_9.png",
     generation: ZeniGenerations.Gen0,
     class: ZeniClasses.Rogue,
-    weight: 1,
+    weight: 0.33,
   },
 ];
 

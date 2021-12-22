@@ -14,11 +14,13 @@ const generateArn = (zeniCombo: ZeniImageCombo) => {
   const necklaceId =
     zeniCombo.necklace.id !== "necklace_none" ? zeniCombo.necklace.id.split("_")[2] : "0";
 
-  return `g0_${zeniCombo.class}_b${bodyId}_s${skinId}_e${eyesId}_m${mouthId}_f${foreheadId}_c${crownId}_n${necklaceId}`;
+  return `g0_${zeniCombo.class}_b${bodyId}_s${skinId}_e${eyesId}_m${mouthId}_f${foreheadId}_c${crownId}_n${necklaceId}_i${zeniCombo.classId}`;
 };
 
 function generateZeniCombo(
   zeniClass: ZeniClasses,
+  tokenId: number,
+  classId: number,
   items: {
     [arn: string]: ZeniImageCombo;
   }
@@ -57,6 +59,7 @@ function generateZeniCombo(
   );
 
   const combo: ZeniImageCombo = {
+    tokenId,
     class: zeniClass,
     body,
     skin: head,
@@ -72,7 +75,7 @@ function generateZeniCombo(
   if (typeof items[combo.arn] === "undefined") {
     return combo;
   } else {
-    return generateZeniCombo(zeniClass, items);
+    return generateZeniCombo(zeniClass, tokenId, classId, items);
   }
 }
 const TOTAL_ZENIS = 5454;
@@ -199,31 +202,49 @@ export const logResults = (traits: { [arn: string]: ZeniImageCombo }) => {
 export const generateTraits = (): {
   [arn: string]: ZeniImageCombo;
 } => {
-  const traits: {
+  const arns: string[] = [];
+  const combosByArn: {
     [arn: string]: ZeniImageCombo;
   } = {};
+  const arnByTokenId: {
+    [tokenId: number]: string;
+  } = {};
 
+  let tokenId = 1;
+  let magiId = 1;
   // GENERATE MAGI TRAITS
-  for (let x = 0; x < 1818; ++x) {
-    const newCombo = generateZeniCombo(ZeniClasses.Warrior, traits);
-    traits[newCombo.arn] = newCombo;
+  for (let x = 0; x < 1735; ++x) {
+    const newCombo = generateZeniCombo(ZeniClasses.Magi, tokenId, magiId, traits);
+    combosByArn[newCombo.arn] = newCombo;
+
+    arnByTokenId[tokenId] = newCombo.arn;
+    arns.push(newCombo.arn);
+    ++magiId;
+    ++tokenId;
   }
 
-  // GENERATE MAGI TRAITS
-  for (let x = 0; x < 1818; ++x) {
-    const newCombo = generateZeniCombo(ZeniClasses.Magi, traits);
-    traits[newCombo.arn] = newCombo;
-  }
-
+  let rogueId = 1;
   // GENERATE ROGUE TRAITS
-  for (let x = 0; x < 1818; ++x) {
-    const newCombo = generateZeniCombo(ZeniClasses.Rogue, traits);
-    traits[newCombo.arn] = newCombo;
+  for (let x = 0; x < 1735; ++x) {
+    const newCombo = generateZeniCombo(ZeniClasses.Rogue, tokenId, rogueId, combosByArn);
+    combosByArn[newCombo.arn] = newCombo;
+    ++rogueId;
+    ++tokenId;
   }
 
-  const results = logResults(traits);
-  console.log(JSON.stringify(results));
-  fs.writeFile("./metadata/traits.json", JSON.stringify(results), (err) => {
+  let warriorId = 1;
+
+  // GENERATE WARRIOR TRAITS
+  for (let x = 0; x < 1735; ++x) {
+    const newCombo = generateZeniCombo(ZeniClasses.Warrior, tokenId, warriorId, combosByArn);
+    combosByArn[newCombo.arn] = newCombo;
+    ++rogueId;
+    ++warriorId;
+  }
+
+  const results = logResults(combosByArn);
+
+  fs.writeFile("./metadata/token-to-arn.json", JSON.stringify(arnByTokenId), (err) => {
     if (err) {
       console.log("Error writing file", err);
     } else {
@@ -231,5 +252,28 @@ export const generateTraits = (): {
     }
   });
 
-  return traits;
+  fs.writeFile("./metadata/arns.json", JSON.stringify(arns), (err) => {
+    if (err) {
+      console.log("Error writing file", err);
+    } else {
+      console.log("Successfully wrote file");
+    }
+  });
+
+  fs.writeFile("./metadata/combos-by-arn.json", JSON.stringify(combosByArn), (err) => {
+    if (err) {
+      console.log("Error writing file", err);
+    } else {
+      console.log("Successfully wrote file");
+    }
+  });
+  fs.writeFile("./metadata/results.json", JSON.stringify(results), (err) => {
+    if (err) {
+      console.log("Error writing file", err);
+    } else {
+      console.log("Successfully wrote file");
+    }
+  });
+
+  return combosByArn;
 };

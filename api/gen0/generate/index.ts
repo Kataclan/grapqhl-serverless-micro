@@ -55,6 +55,8 @@ export default async (req: VercelRequest, res: VercelResponse) => {
 
   const traits = Object.values(allTraits);
 
+  for (let i = 0; i < traits.length; ++i) {}
+
   // for (let i = 0; i < traits.length; ++i) {
   //   await generateImageFromZeniTrait(traits[i], i);
   // }

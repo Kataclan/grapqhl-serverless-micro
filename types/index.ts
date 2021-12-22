@@ -57,6 +57,7 @@ export interface Zeni {
 }
 
 export interface ZeniImageCombo {
+  tokenId: number;
   class: ZeniClasses;
   body: ZeniImageInfo;
   skin: ZeniImageInfo;
