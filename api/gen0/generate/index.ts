@@ -3,7 +3,7 @@ import * as fs from "fs";
 import * as Canvas from "canvas";
 import { IMAGE_HEIGHT, IMAGE_WIDTH, __generatedImagesDir } from "../../../constants/media";
 import { ZeniClassCodes, ZeniImageCombo } from "../../../types";
-import { generateTraits } from "../../../utils/traits";
+import { generateTraits } from "../../../utils/gen0-traits-generation";
 
 export const generateImageFromZeniTrait = async (trait: ZeniImageCombo, zeniId: number) => {
   const canvas = Canvas.createCanvas(IMAGE_WIDTH, IMAGE_HEIGHT);
@@ -51,15 +51,8 @@ export const generateImageFromZeniTrait = async (trait: ZeniImageCombo, zeniId: 
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export default async (req: VercelRequest, res: VercelResponse) => {
-  const allTraits = generateTraits();
+  generateTraits();
 
-  const traits = Object.values(allTraits);
-
-  for (let i = 0; i < traits.length; ++i) {}
-
-  // for (let i = 0; i < traits.length; ++i) {
-  //   await generateImageFromZeniTrait(traits[i], i);
-  // }
   console.log("OK");
 
   return res.send({

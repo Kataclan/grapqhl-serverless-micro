@@ -1,5 +1,6 @@
 import { VercelRequest, VercelResponse } from "@vercel/node";
 import { IMAGES_BY_TRAIT, ZeniImageTraits } from "../../../../constants/media";
+import MAGIARNs from "./magi-ids-to-arn.json";
 
 const ZENIS_ARN_DATABASE: {
   [tokenId: string]: string;
@@ -29,7 +30,7 @@ interface ZeniApi_MetadataAttribute {
 }
 
 const findZeni = (tokenId: string) => {
-  return ZENIS_ARN_DATABASE[tokenId];
+  return MAGIARNs[tokenId] as string;
 };
 
 const findImageInfo = (
@@ -48,7 +49,6 @@ const findImageInfo = (
       generatedId = id === "0" ? `${traitName}_none` : `${traitName}_gen${generation}_${id}`;
       break;
   }
-  console.log(generatedId);
   return IMAGES_BY_TRAIT[trait].find((imageInfo) => imageInfo.id === generatedId);
 };
 
@@ -62,15 +62,15 @@ const generazeZeniFromArn = (
     tokenId,
     tokenIdByClass,
     arn,
-    generation: splittedArn[0].substring(1),
-    zeniClass: splittedArn[1], // first letter upper,
-    bodyId: splittedArn[2].substring(1),
-    skinId: splittedArn[3].substring(1),
-    eyesId: splittedArn[4].substring(1),
-    mouthId: splittedArn[5].substring(1),
-    foreheadId: splittedArn[6].substring(1),
-    crownId: splittedArn[7].substring(1),
-    necklaceId: splittedArn[8].substring(1),
+    zeniClass: splittedArn[0],
+    generation: splittedArn[2],
+    bodyId: splittedArn[3].substring(1),
+    skinId: splittedArn[4].substring(1),
+    eyesId: splittedArn[5].substring(1),
+    mouthId: splittedArn[6].substring(1),
+    foreheadId: splittedArn[7].substring(1),
+    crownId: splittedArn[8].substring(1),
+    necklaceId: splittedArn[9].substring(1),
   };
 };
 
@@ -108,7 +108,7 @@ const generateZeniMetadataAttributes = ({
     {
       trait_type: "Generation",
       display_type: "number",
-      value: parseInt(generation),
+      value: parseInt(generation[1]),
     },
     {
       trait_type: "Class",
@@ -160,11 +160,11 @@ export default async (req: VercelRequest, res: VercelResponse) => {
     const zeniArn = findZeni(tokenIdByClass);
     const zeni = generazeZeniFromArn(tokenId, tokenIdByClass, zeniArn);
     const attributes = generateZeniMetadataAttributes(zeni);
-
+    const classDisplayName = `${zeni.zeniClass.charAt(0).toUpperCase() + zeni.zeniClass.slice(1)}`;
     return res.json({
-      name: `Generation ${zeni.generation} Zeni #${tokenId}`,
+      name: `Genesis ${classDisplayName} Zeni #${tokenId}`,
       image: `https://cms.zeniverse.com/${tokenIdByClass}`,
-      description: `A ${zeni.zeniClass} Zeni of the Zeniverse's Generation ${zeni.generation}`,
+      description: `Genesis ${classDisplayName} Zeni of the Zeniverse's Generation ${zeni.generation}`,
       attributes,
     });
   } catch (error) {
